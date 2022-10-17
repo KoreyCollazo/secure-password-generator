@@ -16,7 +16,7 @@ var uppercasePrompt
 var numbersPrompt
 var specialPrompt
 var passwordLegnth
-var userInput
+var userInput = []
 
 //generate password
 function generatePassword() {
@@ -26,6 +26,7 @@ function generatePassword() {
   let numbersPrompt = confirm("would you like to include numerical characters?");
   let specialPrompt = confirm("would you like to include special characters?");
   let passwordLegnth = parseInt(prompt("Please enter password length (atleast between 8 - 128 characters)"));
+  var password = [];
   
 if (!passwordLegnth) {
   alert("you must select a password length");
@@ -49,7 +50,36 @@ else if  (lowercasePrompt && uppercasePrompt && numbersPrompt){
 }else if  (specialPrompt && uppercasePrompt && numbersPrompt){
   userInput = specialCharacters.concat(uppercaseLetters, numbers)
 }
+//2 true
+else if  (lowercasePrompt && uppercasePrompt){
+  userInput = lowercaseLetters.concat(uppercaseLetters)
+} else if  (lowercasePrompt && numbersPrompt){
+  userInput = lowercaseLetters.concat(numbersPrompt)
+} else if  (lowercasePrompt && specialPrompt){
+  userInput = lowercaseLetters.concat(specialCharacters)
+} else if  (uppercasePrompt && numbersPrompt){
+  userInput = uppercaseLetters.concat(numbersPrompt)
+} else if  (uppercasePrompt && specialPrompt){
+  userInput = uppercaseLetters.concat(specialPrompt)
+} else if  (numbersPrompt && specialPrompt){
+  userInput = numbers.concat(specialCharacters)
 }
+//1 true
+else if  (lowercasePrompt){
+  userInput = lowercaseLetters
+} else if  (uppercasePrompt){
+  userInput = uppercaseLetters
+} else if  (numbersPrompt){
+  userInput = numbers
+} else if  (specialPrompt){
+  userInput = specialCharacters
+}
+for (var i = 0; i < passwordLegnth; i++) {
+  var filteredInput = userInput[Math.floor(Math.random() * userInput.length)];
+  password.push(filteredInput);
+  console.log (filteredInput)
+}}
+
 
 
 // Assignment Code
